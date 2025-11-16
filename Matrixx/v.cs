@@ -25,10 +25,6 @@ Console.WriteLine(mx3);
 Matrix mx4 = new Matrix(mx1);
 Console.WriteLine(mx4);
 
-Console.WriteLine($"m1 идентична m3: {mx1.IsIdentical(mx4)} \n");
-Console.WriteLine($"m1 идентична m2: {mx1.IsIdentical(mx2)}\n");
-
-
 Matrix result1 = mx1 + mx2;
 Console.WriteLine(result1);
 
@@ -77,31 +73,6 @@ Console.WriteLine(zeroQmx);
 
 Console.WriteLine($"Определитель qmx1: {qmx1.Determinant}\n");
 
-QMatrix qmx4 = new QMatrix(new double[,]
-        {
-            { 2, 5, 3, 5, 1},
-            { 1, 7, 4 , 5 ,10},
-            { 6, 2, 9 , 0, 8},
-            { 3, 4, 5, 9, 11 },
-            {0, 15, 12, 6, 9 }
-        });
-
-double det = qmx4.Determinant;
-Console.WriteLine($"\n\nОпределитель qmx4: {det}\n");
-
-QMatrix inverse = qmx1.Inverse;
-Console.WriteLine(inverse);
-
-QMatrix matrix = new QMatrix(new double[,] { { 1, 2 }, { 3, 4 } });
-
-matrix.ComputationProgress += MyProgressHandler;
-
-var inverse2 = matrix.Inverse;
-
-matrix.ComputationProgress -= MyProgressHandler;
-
-static void MyProgressHandler(string message)
-{
-    Console.WriteLine($"Прогресс: {message}");
-}
-
+Matrix mxn1 = null;
+Matrix mxn2 = null;
+Console.WriteLine(mxn1 == mxn2);
