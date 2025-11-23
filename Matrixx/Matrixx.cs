@@ -52,7 +52,7 @@ public class Matrix
         }
     }
 
-    public Matrix(Matrix other)
+    public Matrix(Matrix? other)
     {
         try
         {
@@ -132,7 +132,7 @@ public class Matrix
         return HashCode.Combine(rows, cols);
     }
 
-    public static Matrix operator +(Matrix a, Matrix b)
+    public static Matrix operator +(Matrix? a, Matrix? b)
     {
         try
         {
@@ -152,7 +152,7 @@ public class Matrix
         }
     }
 
-    public static Matrix operator -(Matrix a, Matrix b)
+    public static Matrix operator -(Matrix? a, Matrix? b)
     {
         try
         {
@@ -172,7 +172,7 @@ public class Matrix
         }
     }
 
-    public static Matrix operator *(Matrix matrix, double scalar)
+    public static Matrix operator *(Matrix? matrix, double scalar)
     {
         try
         {
@@ -192,10 +192,10 @@ public class Matrix
         }
     }
 
-    public static Matrix operator *(double scalar, Matrix matrix)
+    public static Matrix operator *(double scalar, Matrix? matrix)
         => matrix * scalar;
 
-    public static Matrix operator /(Matrix matrix, double scalar)
+    public static Matrix operator /(Matrix? matrix, double scalar)
     {
         try
         {
@@ -210,7 +210,7 @@ public class Matrix
         }
     }
 
-    public static Matrix operator *(Matrix a, Matrix b)
+    public static Matrix operator *(Matrix? a, Matrix? b)
     {
         try
         {
@@ -236,7 +236,7 @@ public class Matrix
         }
     }
 
-    public static bool operator ==(Matrix a, Matrix b)
+    public static bool operator ==(Matrix? a, Matrix? b)
     {
         try
         {
@@ -257,9 +257,9 @@ public class Matrix
         }
     }
 
-    public static bool operator !=(Matrix a, Matrix b) => !(a == b);
+    public static bool operator !=(Matrix? a, Matrix? b) => !(a == b);
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         try
         {
