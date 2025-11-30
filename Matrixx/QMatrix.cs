@@ -1,8 +1,9 @@
-﻿using static Exceptions;
+using static Exceptions;
 
 public class QMatrix : Matrix
 {
-
+    public QMatrix() : base(1, 1) { }
+    
     public QMatrix(double[,] array) : base(array)
     {
         try
