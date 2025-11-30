@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 
 public class Matrix
@@ -7,8 +7,12 @@ public class Matrix
     private int rows;
     private int cols;
 
-    public int Rows => rows;
-    public int Cols => cols;
+    public Matrix()
+    {
+        rows = 1;
+        cols = 1;
+        data = new double[1, 1];
+    }
 
     public Matrix(double[,] array)
     {
@@ -75,6 +79,9 @@ public class Matrix
         }
     }
 
+    public int Rows => rows;
+    public int Cols => cols;
+
     public double this[int row, int col]
     {
         get
@@ -101,6 +108,26 @@ public class Matrix
                 data[row, col] = value;
             }
             catch { }
+        }
+    }
+    public Matrix Transposed
+    {
+        get
+        {
+            try
+            {
+                Matrix result = new Matrix(cols, rows);
+
+                for (int i = 0; i < rows; i++)
+                    for (int j = 0; j < cols; j++)
+                        result.data[j, i] = data[i, j];
+
+                return result;
+            }
+            catch
+            {
+                return new Matrix(1, 1);
+            }
         }
     }
 
@@ -195,7 +222,7 @@ public class Matrix
     public static Matrix operator *(double scalar, Matrix? matrix)
         => matrix * scalar;
 
-    public static Matrix operator /(Matrix? matrix, double scalar)
+    public static Matrix operator /(Matrix matrix, double scalar)
     {
         try
         {
@@ -224,7 +251,7 @@ public class Matrix
                 {
                     double sum = 0;
                     for (int k = 0; k < a.cols; k++)
-                        sum += a.data[i, k] + b.data[k, j];
+                        sum += a.data[i, k] * b.data[k, j];
                     result.data[i, j] = sum;
                 }
 
@@ -268,27 +295,6 @@ public class Matrix
         catch
         {
             return false;
-        }
-    }
-
-    public Matrix Transposed
-    {
-        get
-        {
-            try
-            {
-                Matrix result = new Matrix(cols, rows);
-
-                for (int i = 0; i < rows; i++)
-                    for (int j = 0; j < cols; j++)
-                        result.data[j, i] = data[i, j];
-
-                return result;
-            }
-            catch
-            {
-                return new Matrix(1, 1);
-            }
         }
     }
 }
