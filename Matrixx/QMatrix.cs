@@ -2,23 +2,7 @@ using static Exceptions;
 
 public class QMatrix : Matrix
 {
-    public QMatrix() : base(1, 1) { }
     
-    public QMatrix(double[,] array) : base(array)
-    {
-        try
-        {
-            if (Rows != Cols)
-                throw new NonSquareMatrixException();
-        }
-        catch
-        {
-        }
-    }
-
-    public QMatrix(QMatrix other) : base(other) { }
-    public QMatrix(Matrix other) : base(other) { }
-    public QMatrix(int size) : base(size, size) { }
 
     public int Size => Rows;
 
@@ -83,6 +67,24 @@ public class QMatrix : Matrix
             }
         }
     }
+
+public QMatrix() : base(1, 1) { }
+    
+    public QMatrix(double[,] array) : base(array)
+    {
+        try
+        {
+            if (Rows != Cols)
+                throw new NonSquareMatrixException();
+        }
+        catch
+        {
+        }
+    }
+
+    public QMatrix(QMatrix other) : base(other) { }
+    public QMatrix(Matrix other) : base(other) { }
+    public QMatrix(int size) : base(size, size) { }
 
     private QMatrix GetMinor(int row, int col)
     {
