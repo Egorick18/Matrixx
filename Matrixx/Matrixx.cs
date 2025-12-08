@@ -7,7 +7,61 @@ public class Matrix
     private int rows;
     private int cols;
 
-    public Matrix()
+    
+
+    public int Rows => rows;
+    public int Cols => cols;
+
+    public double this[int row, int col]
+    {
+        get
+        {
+            try
+            {
+                if (row < 0 || row >= rows || col < 0 || col >= cols)
+                    throw new IndexOutOfRangeException();
+
+                return data[row, col];
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+        set
+        {
+            try
+            {
+                if (row < 0 || row >= rows || col < 0 || col >= cols)
+                    throw new IndexOutOfRangeException();
+
+                data[row, col] = value;
+            }
+            catch { }
+        }
+    }
+    public Matrix Transposed
+    {
+        get
+        {
+            try
+            {
+                Matrix result = new Matrix(cols, rows);
+
+                for (int i = 0; i < rows; i++)
+                    for (int j = 0; j < cols; j++)
+                        result.data[j, i] = data[i, j];
+
+                return result;
+            }
+            catch
+            {
+                return new Matrix(1, 1);
+            }
+        }
+    }
+
+public Matrix()
     {
         rows = 1;
         cols = 1;
@@ -76,58 +130,6 @@ public class Matrix
             rows = 1;
             cols = 1;
             data = new double[1, 1];
-        }
-    }
-
-    public int Rows => rows;
-    public int Cols => cols;
-
-    public double this[int row, int col]
-    {
-        get
-        {
-            try
-            {
-                if (row < 0 || row >= rows || col < 0 || col >= cols)
-                    throw new IndexOutOfRangeException();
-
-                return data[row, col];
-            }
-            catch
-            {
-                return 0;
-            }
-        }
-        set
-        {
-            try
-            {
-                if (row < 0 || row >= rows || col < 0 || col >= cols)
-                    throw new IndexOutOfRangeException();
-
-                data[row, col] = value;
-            }
-            catch { }
-        }
-    }
-    public Matrix Transposed
-    {
-        get
-        {
-            try
-            {
-                Matrix result = new Matrix(cols, rows);
-
-                for (int i = 0; i < rows; i++)
-                    for (int j = 0; j < cols; j++)
-                        result.data[j, i] = data[i, j];
-
-                return result;
-            }
-            catch
-            {
-                return new Matrix(1, 1);
-            }
         }
     }
 
